@@ -3,6 +3,14 @@ name = "ECCRust"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "encryptor"
+path = "src/encryptor.rs"
+
+[[bin]]
+name = "decryptor"
+path = "src/decryptor.rs"
+
 [dependencies]
 aes = "0.8.4"
 block-padding = { version = "0.3.3", features = ["std"] }
@@ -10,4 +18,7 @@ cbc = { version = "0.1.2", features = ["alloc"] }
 cipher = { version = "0.4.4", features = ["std"] }
 hex = "0.4.3"
 rand = { version = "0.9.1", features = ["std"] }
+num-bigint = "0.4.6"
+num-traits = "0.2.19"
+lazy_static = "1.5.0"
 
