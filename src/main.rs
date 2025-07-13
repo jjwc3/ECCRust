@@ -1,3 +1,4 @@
+// Encryption
 use std::fs;
 use std::io;
 use aes::Aes256;
@@ -11,20 +12,31 @@ use std::path::Path;
 const KEY_SIZE: usize = 32; // 대칭키 크기
 const BLOCK_SIZE: usize = 16; // AES Block 크기
 
+// 파일을 읽어 그 내용의 바이트값을 반환함.
 fn read_file_to_bytes_sync(path: &str) -> Result<Vec<u8>, io::Error> {
-    fs::read(path) // `fs::read` 함수가 이 역할을 수행합니다.
+    fs::read(path)
 }
 
+// path에 data(byte)를 씀.
 fn write_bytes_to_file_sync(path: &str, data: &[u8]) -> Result<(), io::Error> {
     fs::write(path, data)
 }
 
+// main 실행 함수. 코드가 실행되면 이 함수가 실행됨.
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    aes_encription()?;
+    Ok(())
+}
 
+// AES-256 암호화 함수. 파일 데이터를 암호화함.
+fn aes_encription() -> Result<(), Box<dyn std::error::Error>> {
+
+    // 비밀 키를 생성함.
     let mut key_bytes = [0u8; KEY_SIZE];
     OsRng.try_fill_bytes(&mut key_bytes)?;
-    println!("{}", hex::encode(&key_bytes));
+    println!("비밀 키: {}", hex::encode(&key_bytes));
 
+    // 초기화 벡터를 생성함.
     let mut iv_bytes = [0u8; BLOCK_SIZE];
     OsRng.try_fill_bytes(&mut iv_bytes)?;
     // println!("{}", hex::encode(&iv_bytes));
