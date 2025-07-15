@@ -21,4 +21,6 @@ rand = { version = "0.9.1", features = ["std"] }
 num-bigint = "0.4.6"
 num-traits = "0.2.19"
 lazy_static = "1.5.0"
+hkdf = "0.12.4"
+sha2 = "0.10.9"
 
